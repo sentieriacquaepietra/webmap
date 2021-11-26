@@ -23,11 +23,11 @@ mymap.addControl(new L.Control.Fullscreen({
 mymap.attributionControl.addAttribution('powered by<a href="http://www.naturagis.it" target="_blank"> <img src ="https://www.naturagis.it/wp-content/uploads/2021/10/NG-minimini.png" width = "15px"> naturagis</a>');
 
 // loading some basemaps
-var IGM = L.tileLayer('https://ludovico85.github.io/custom_XYZ_tiles/IGM_cisav/{z}/{x}/{-y}.png', {
-    tms: true,
-	opacity: 1,
-	attribution: '<a href="https://github.com/ludovico85/custom_XYZ_tiles">IGM</a>'
-});
+//var IGM = L.tileLayer('https://ludovico85.github.io/custom_XYZ_tiles/IGM_cisav/{z}/{x}/{-y}.png', {
+//    tms: true,
+//	opacity: 1,
+//	attribution: '<a href="https://github.com/ludovico85/custom_XYZ_tiles">IGM</a>'
+//});
 
 var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
 	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
@@ -45,7 +45,7 @@ var CyclOSM = L.tileLayer('https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}
 
 var baseMaps = {
 	"Esri World Imagery": Esri_WorldImagery,
-	"Estratto IGM 1:25.000": IGM,
+//	"Estratto IGM 1:25.000": IGM,
 	"OpenStreetMap": OpenStreetMap_Mapnik,
 	"CyclOSM": CyclOSM,
 };
@@ -269,7 +269,7 @@ L.control.groupedLayers(baseMaps, groupedOverlays, {collapsed: false}).addTo(mym
 
 // sidebar
 // create the sidebar instance and add it to the map
-var sidebar = L.control.sidebar({container:'sidebar'}).addTo(mymap).open('home');
+var sidebar = L.control.sidebar({container:'sidebar'}).addTo(mymap);
 // add panels dynamically to the sidebar
 
 // be notified when a panel is opened
