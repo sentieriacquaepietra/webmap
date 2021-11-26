@@ -264,8 +264,18 @@ var groupedOverlays = {
 	},
 };
 
+// function for controlling the behaviour of the control.layers
+if(window.screen.width <=767) {
+	var isCollapsed = true;
+} else {
+	var isCollapsed = false;
+};
+
+console.log(isCollapsed)
+console.log(window.screen.width)
+
 //L.control.layers(baseMaps, overlayMaps, {collapsed: true}).addTo(mymap);
-L.control.groupedLayers(baseMaps, groupedOverlays, {collapsed: false}).addTo(mymap);
+L.control.groupedLayers(baseMaps, groupedOverlays, {collapsed: isCollapsed}).addTo(mymap);
 
 // sidebar
 // create the sidebar instance and add it to the map
