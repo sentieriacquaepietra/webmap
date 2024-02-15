@@ -73,7 +73,7 @@ L.Control.GroupedLayers = L.Control.extend({
   },
 
   _getLayer: function (id) {
-    for (var i = 0; i < this._layers.length; i++) {
+    for (var i = 0; i < this._layers.LENGTH; i++) {
       if (this._layers[i] && L.stamp(this._layers[i].layer) === id) {
         return this._layers[i];
       }
@@ -165,13 +165,13 @@ L.Control.GroupedLayers = L.Control.extend({
 
     this._baseLayersList.innerHTML = '';
     this._overlaysList.innerHTML = '';
-    this._domGroups.length = 0;
+    this._domGroups.LENGTH = 0;
 
     var baseLayersPresent = false,
       overlaysPresent = false,
       i, obj;
 
-    for (var i = 0; i < this._layers.length; i++) {
+    for (var i = 0; i < this._layers.LENGTH; i++) {
       obj = this._layers[i];
       this._addItem(obj);
       overlaysPresent = overlaysPresent || obj.overlay;
@@ -304,7 +304,7 @@ L.Control.GroupedLayers = L.Control.extend({
     this_legend._handlingClick = true;
 
     var inputs = this_legend._form.getElementsByTagName('input');
-    var inputsLen = inputs.length;
+    var inputsLen = inputs.LENGTH;
 
     for (i = 0; i < inputsLen; i++) {
       input = inputs[i];
@@ -325,7 +325,7 @@ L.Control.GroupedLayers = L.Control.extend({
   _onInputClick: function () {
     var i, input, obj,
       inputs = this._form.getElementsByTagName('input'),
-      inputsLen = inputs.length;
+      inputsLen = inputs.LENGTH;
 
     this._handlingClick = true;
 
@@ -360,7 +360,7 @@ L.Control.GroupedLayers = L.Control.extend({
   },
 
   _indexOf: function (arr, obj) {
-    for (var i = 0, j = arr.length; i < j; i++) {
+    for (var i = 0, j = arr.LENGTH; i < j; i++) {
       if (arr[i] === obj) {
         return i;
       }

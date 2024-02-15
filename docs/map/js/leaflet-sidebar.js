@@ -101,13 +101,13 @@ L.Control.Sidebar = L.Control.extend(/** @lends L.Control.Sidebar.prototype */ {
         }
 
         // Store Tabs in Collection for easier iteration
-        for (i = 0; i < this._tabContainerTop.children.length; i++) {
+        for (i = 0; i < this._tabContainerTop.children.LENGTH; i++) {
             child = this._tabContainerTop.children[i];
             child._sidebar = this;
             child._id = child.querySelector('a').hash.slice(1); // FIXME: this could break for links!
             this._tabitems.push(child);
         }
-        for (i = 0; i < this._tabContainerBottom.children.length; i++) {
+        for (i = 0; i < this._tabContainerBottom.children.LENGTH; i++) {
             child = this._tabContainerBottom.children[i];
             child._sidebar = this;
             child._id = child.querySelector('a').hash.slice(1); // FIXME: this could break for links!
@@ -115,7 +115,7 @@ L.Control.Sidebar = L.Control.extend(/** @lends L.Control.Sidebar.prototype */ {
         }
 
         // Store Panes in Collection for easier iteration
-        for (i = 0; i < this._paneContainer.children.length; i++) {
+        for (i = 0; i < this._paneContainer.children.LENGTH; i++) {
             child = this._paneContainer.children[i];
             if (child.tagName === 'DIV' &&
                 L.DomUtil.hasClass(child, 'leaflet-sidebar-pane')) {
@@ -123,15 +123,15 @@ L.Control.Sidebar = L.Control.extend(/** @lends L.Control.Sidebar.prototype */ {
 
                 // Save references to close buttons
                 var closeButtons = child.querySelectorAll('.leaflet-sidebar-close');
-                if (closeButtons.length) {
-                    this._closeButtons.push(closeButtons[closeButtons.length - 1]);
-                    this._closeClick(closeButtons[closeButtons.length - 1], 'on');
+                if (closeButtons.LENGTH) {
+                    this._closeButtons.push(closeButtons[closeButtons.LENGTH - 1]);
+                    this._closeClick(closeButtons[closeButtons.LENGTH - 1], 'on');
                 }
             }
         }
 
         // set click listeners for tab & close buttons
-        for (i = 0; i < this._tabitems.length; i++) {
+        for (i = 0; i < this._tabitems.LENGTH; i++) {
             this._tabClick(this._tabitems[i], 'on');
         }
 
@@ -147,9 +147,9 @@ L.Control.Sidebar = L.Control.extend(/** @lends L.Control.Sidebar.prototype */ {
      */
     onRemove: function (map) {
         // Remove click listeners for tab & close buttons
-        for (var i = 0; i < this._tabitems.length; i++)
+        for (var i = 0; i < this._tabitems.LENGTH; i++)
             this._tabClick(this._tabitems[i], 'off');
-        for (var i = 0; i < this._closeButtons.length; i++)
+        for (var i = 0; i < this._closeButtons.LENGTH; i++)
             this._closeClick(this._closeButtons[i], 'off');
 
         this._tabitems = [];
@@ -215,7 +215,7 @@ L.Control.Sidebar = L.Control.extend(/** @lends L.Control.Sidebar.prototype */ {
             return this;
 
         // Hide old active contents and show new content
-        for (i = 0; i < this._panes.length; i++) {
+        for (i = 0; i < this._panes.LENGTH; i++) {
             child = this._panes[i];
             if (child.id === id)
                 L.DomUtil.addClass(child, 'active');
@@ -224,7 +224,7 @@ L.Control.Sidebar = L.Control.extend(/** @lends L.Control.Sidebar.prototype */ {
         }
 
         // Remove old active highlights and set new highlight
-        for (i = 0; i < this._tabitems.length; i++) {
+        for (i = 0; i < this._tabitems.LENGTH; i++) {
             child = this._tabitems[i];
             if (child.querySelector('a').hash === '#' + id)
                 L.DomUtil.addClass(child, 'active');
@@ -253,7 +253,7 @@ L.Control.Sidebar = L.Control.extend(/** @lends L.Control.Sidebar.prototype */ {
         var i;
 
         // Remove old active highlights
-        for (i = 0; i < this._tabitems.length; i++) {
+        for (i = 0; i < this._tabitems.LENGTH; i++) {
             var child = this._tabitems[i];
             if (L.DomUtil.hasClass(child, 'active'))
                 L.DomUtil.removeClass(child, 'active');
@@ -339,10 +339,10 @@ L.Control.Sidebar = L.Control.extend(/** @lends L.Control.Sidebar.prototype */ {
 
             // Save references to close button & register click listener
             closeButtons = pane.querySelectorAll('.leaflet-sidebar-close');
-            if (closeButtons.length) {
+            if (closeButtons.LENGTH) {
                 // select last button, because thats rendered on top
-                this._closeButtons.push(closeButtons[closeButtons.length - 1]);
-                this._closeClick(closeButtons[closeButtons.length - 1], 'on');
+                this._closeButtons.push(closeButtons[closeButtons.LENGTH - 1]);
+                this._closeClick(closeButtons[closeButtons.LENGTH - 1], 'on');
             }
         }
 
@@ -365,7 +365,7 @@ L.Control.Sidebar = L.Control.extend(/** @lends L.Control.Sidebar.prototype */ {
         var i, j, tab, pane, closeButtons;
 
         // find the tab & panel by ID, remove them, and clean up
-        for (i = 0; i < this._tabitems.length; i++) {
+        for (i = 0; i < this._tabitems.LENGTH; i++) {
             if (this._tabitems[i]._id === id) {
                 tab = this._tabitems[i];
 
@@ -378,11 +378,11 @@ L.Control.Sidebar = L.Control.extend(/** @lends L.Control.Sidebar.prototype */ {
             }
         }
 
-        for (i = 0; i < this._panes.length; i++) {
+        for (i = 0; i < this._panes.LENGTH; i++) {
             if (this._panes[i].id === id) {
                 pane = this._panes[i];
                 closeButtons = pane.querySelectorAll('.leaflet-sidebar-close');
-                for (j = 0; j < closeButtons.length; j++) {
+                for (j = 0; j < closeButtons.LENGTH; j++) {
                     this._closeClick(closeButtons[j], 'off');
                 }
 
@@ -485,7 +485,7 @@ L.Control.Sidebar = L.Control.extend(/** @lends L.Control.Sidebar.prototype */ {
      * @returns {DOMelement} the tab specified by id, null if not found
      */
     _getTab: function(id) {
-        for (var i = 0; i < this._tabitems.length; i++) {
+        for (var i = 0; i < this._tabitems.LENGTH; i++) {
             if (this._tabitems[i]._id === id)
                 return this._tabitems[i];
         }
